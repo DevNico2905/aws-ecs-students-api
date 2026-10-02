@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: students-api
+
+server:
+  port: ${PORT:8080}
+  # Al detener la tarea, ECS envía SIGTERM: termina las peticiones en curso antes de apagar
+  shutdown: graceful
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+logging:
+  level:
+    root: INFO
